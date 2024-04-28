@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>llama-cpp-wasm multithreading</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+  </head>
+
+  <body>
+    <header class="container">
+      <hgroup>
+        <h1><a href="/">llama-cpp-wasm</a> wasm32</h1>
+        <br />
+
+        <p>
+          WebAssembly (Wasm) Build and Bindings for
+          <a href="https://github.com/ggerganov/llama.cpp" target="_blank"
+            >llama.cpp</a
+          >.
+        </p>
+        <br />
+
+        <p>
+          This demonstration enables you to run LLM models directly in your
+          browser utilizing JavaScript, WebAssembly, and llama.cpp.
+        </p>
+        <br />
+
+        <p>
+          Repository:
+          <a href="https://github.com/tangledgroup/llama-cpp-wasm">
+            https://github.com/tangledgroup/llama-cpp-wasm
+          </a>
+        </p>
+        <br />
+
+        <p>
+          When you click <b>Run</b>, model will be first downloaded and cached
+          in browser.
+        </p>
+      </hgroup>
+    </header>
+
+    <main class="container">
+      <section>
+        <h2>Demo</h2>
+
+        <label> Model: </label>
+
+        <select id="model" name="model" aria-label="Select model" required>
+          <option
+            value="https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf/resolve/main/Phi-3-mini-4k-instruct-q4.gguf"
+          >
+            Phi-3
+          </option>
+          <option
+            value="https://huggingface.co/QuantFactory/Meta-Llama-3-8B-GGUF/resolve/main/Meta-Llama-3-8B.Q4_K_M.gguf"
+          >
+            Meta-Llama-3-8B.Q4_K_M.gguf
+          </option>
+        </select>
+
+        <label> Prompt: </label>
+
+        <textarea id="prompt" name="prompt" rows="5">
+富士山ってなんですか？</textarea
+        >
+
+        <label> Result: </label>
+        <pre id="result" name="result"></pre>
+      </section>
+
+      <section>
+        <button id="run">Run</button>
+      </section>
+
+      <section>
+        <button
+          id="run-progress-loading-model"
+          aria-busy="true"
+          hidden="hidden"
+        >
+          Loading model...
+        </button>
+        <button id="run-progress-loaded-model" aria-busy="true" hidden="hidden">
+          Loaded model
+        </button>
+        <button id="run-progress-generating" aria-busy="true" hidden="hidden">
+          Generating...
+        </button>
+      </section>
+
+      <section>
+        <progress id="model-progress" hidden="hidden" />
+      </section>
+    </main>
+
+    <!-- example -->
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
